@@ -11,7 +11,7 @@ but important to test connection, trigger functions, and that models match schem
 `TEST_RUNNER = 'your_app.test_runner.UseDBTestRunner' `
 
 
-##Approach
+## Approach
 1. Hardcode the `--keepdb` option - ensures django test machinery does not destroy DB
 2. Set `DATABASES[alias][TEST][NAME] = DATABASES[alias][NAME]` - force use of settings.DATABASE
 
