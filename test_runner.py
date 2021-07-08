@@ -18,7 +18,11 @@ class UseDBTestRunner(DiscoverRunner):
             connection = connections[alias]
             db_name = settings.DATABASES[alias]["NAME"]
             settings.DATABASES[alias]['TEST']["NAME"] = db_name
+            settings.DATABASES[alias]['TEST']["SERIALIZE"] = False
+            settings.DATABASES[alias]['TEST']["MIGRATE"] = False
             connection.settings_dict["NAME"] = db_name
+            connection.settings_dict['TEST'] = settings.DATABASES[alias]['TEST']
+
 
     def setup_databases(self, **kwargs):
         self.keepdb = True
